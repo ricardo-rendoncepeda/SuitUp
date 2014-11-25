@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8095C4D51A253F0200A0F22A /* FrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095C4D41A253F0200A0F22A /* FrontView.swift */; };
+		8095C4D71A253F1900A0F22A /* FrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8095C4D61A253F1900A0F22A /* FrontView.xib */; };
 		80EC0C701A24F72E00937FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EC0C6F1A24F72E00937FE4 /* AppDelegate.swift */; };
 		80EC0C721A24F72E00937FE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EC0C711A24F72E00937FE4 /* ViewController.swift */; };
 		80EC0C751A24F72E00937FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80EC0C731A24F72E00937FE4 /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8095C4D41A253F0200A0F22A /* FrontView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrontView.swift; path = LegendaryDeck/FrontView.swift; sourceTree = "<group>"; };
+		8095C4D61A253F1900A0F22A /* FrontView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FrontView.xib; path = LegendaryDeck/FrontView.xib; sourceTree = "<group>"; };
 		80EC0C6A1A24F72E00937FE4 /* SuitUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuitUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80EC0C6E1A24F72E00937FE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80EC0C6F1A24F72E00937FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 				80EC0C9C1A24F9E300937FE4 /* SuitView.swift */,
 				80EC0C9E1A24FA9800937FE4 /* CardView.swift */,
 				80EC0CA01A24FAB300937FE4 /* BackView.xib */,
+				8095C4D41A253F0200A0F22A /* FrontView.swift */,
+				8095C4D61A253F1900A0F22A /* FrontView.xib */,
 			);
 			name = LegendaryDeck;
 			sourceTree = "<group>";
@@ -231,6 +237,7 @@
 			files = (
 				80EC0C9B1A24F8B900937FE4 /* OFL.txt in Resources */,
 				80EC0CA11A24FAB300937FE4 /* BackView.xib in Resources */,
+				8095C4D71A253F1900A0F22A /* FrontView.xib in Resources */,
 				80EC0C751A24F72E00937FE4 /* Main.storyboard in Resources */,
 				80EC0C7A1A24F72E00937FE4 /* LaunchScreen.xib in Resources */,
 				80EC0C771A24F72E00937FE4 /* Images.xcassets in Resources */,
@@ -258,6 +265,7 @@
 				80EC0C9D1A24F9E300937FE4 /* SuitView.swift in Sources */,
 				80EC0C9F1A24FA9800937FE4 /* CardView.swift in Sources */,
 				80EC0C701A24F72E00937FE4 /* AppDelegate.swift in Sources */,
+				8095C4D51A253F0200A0F22A /* FrontView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

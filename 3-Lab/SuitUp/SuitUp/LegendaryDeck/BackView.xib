@@ -58,17 +58,6 @@
                         <constraint firstItem="9Bv-bp-qVR" firstAttribute="leading" secondItem="x91-hK-F5h" secondAttribute="leading" id="kJt-j0-5gP"/>
                         <constraint firstItem="Db0-RQ-PUW" firstAttribute="trailing" secondItem="9Bv-bp-qVR" secondAttribute="trailing" id="ngL-3I-syA"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="20"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                            <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                            <real key="value" value="4"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

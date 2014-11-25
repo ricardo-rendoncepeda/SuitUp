@@ -23,7 +23,7 @@ class CardView: UIView {
     }
   }
   
-  @IBInspectable var borderWidth: CGFloat = 2.0 {
+  @IBInspectable var borderWidth: CGFloat = 4.0 {
     didSet {
       layer.borderWidth = borderWidth
     }
@@ -37,12 +37,13 @@ class CardView: UIView {
         layer.shadowRadius = 3.0
         layer.shadowOffset = CGSizeMake(6.0, 6.0)
       }
-      else {
-        layer.shadowColor = UIColor.clearColor().CGColor
-        layer.shadowOpacity = 0.0
-        layer.shadowRadius = 0.0
-        layer.shadowOffset = CGSizeZero
-      }
     }
+  }
+  
+  // MARK: IB code
+  override func prepareForInterfaceBuilder() {
+    layer.cornerRadius = cornerRadius
+    layer.borderColor = borderColor.CGColor
+    layer.borderWidth = borderWidth
   }
 }
