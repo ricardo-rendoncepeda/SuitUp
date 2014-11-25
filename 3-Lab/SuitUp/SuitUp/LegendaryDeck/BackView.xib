@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6221" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Bitter-Italic.ttf">
+            <string>Bitter-Italic</string>
+        </mutableArray>
+        <mutableArray key="Bitter-Regular.ttf">
+            <string>Bitter-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uw6-uU-k3X" customClass="CardView" customModule="SuitUp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="9Bv-bp-qVR">
+                            <rect key="frame" x="160" y="160" width="280" height="280"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="280" id="EI5-Er-DzY"/>
+                                <constraint firstAttribute="width" constant="280" id="upf-UC-b38"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legen..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x91-hK-F5h">
+                            <rect key="frame" x="160" y="102" width="280" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="gCf-Gg-4eU"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Bitter-Regular" family="Bitter" pointSize="32"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="... dary!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Db0-RQ-PUW">
+                            <rect key="frame" x="160" y="448" width="280" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="KaI-s4-ZIF"/>
+                                <constraint firstAttribute="width" constant="280" id="p3f-hp-67X"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Bitter-Italic" family="Bitter" pointSize="32"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.43137254899999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="9Bv-bp-qVR" secondAttribute="centerX" id="9kg-N6-hg2"/>
+                        <constraint firstItem="Db0-RQ-PUW" firstAttribute="top" secondItem="9Bv-bp-qVR" secondAttribute="bottom" constant="8" id="Jnf-xL-sks"/>
+                        <constraint firstItem="9Bv-bp-qVR" firstAttribute="top" secondItem="x91-hK-F5h" secondAttribute="bottom" constant="8" id="JxE-pY-tfQ"/>
+                        <constraint firstItem="9Bv-bp-qVR" firstAttribute="width" secondItem="x91-hK-F5h" secondAttribute="width" id="S3L-da-H6q"/>
+                        <constraint firstAttribute="centerY" secondItem="9Bv-bp-qVR" secondAttribute="centerY" id="aWY-eB-imt"/>
+                        <constraint firstItem="9Bv-bp-qVR" firstAttribute="leading" secondItem="x91-hK-F5h" secondAttribute="leading" id="kJt-j0-5gP"/>
+                        <constraint firstItem="Db0-RQ-PUW" firstAttribute="trailing" secondItem="9Bv-bp-qVR" secondAttribute="trailing" id="ngL-3I-syA"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Uw6-uU-k3X" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="325-1A-q1J"/>
+                <constraint firstAttribute="trailing" secondItem="Uw6-uU-k3X" secondAttribute="trailing" id="bnx-mj-9SY"/>
+                <constraint firstItem="Uw6-uU-k3X" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mCV-xS-qGZ"/>
+                <constraint firstAttribute="bottom" secondItem="Uw6-uU-k3X" secondAttribute="bottom" id="okj-1V-1Yi"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="Logo" width="374" height="454"/>
+    </resources>
+</document>
