@@ -10,6 +10,16 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
+                    <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="secondaryColor">
+                    <color key="value" red="0.10304365309999999" green="0.09190175682" blue="0.094982780520000004" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="string" keyPath="rank" value="Q"/>
+                <userDefinedRuntimeAttribute type="string" keyPath="suit" value="Heart"/>
+            </userDefinedRuntimeAttributes>
         </view>
     </objects>
 </document>
