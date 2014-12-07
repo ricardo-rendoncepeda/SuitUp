@@ -1,0 +1,331 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>Basic Suit View</title>
+
+</head>
+<body>
+<h1>Basic Suit View</h1>
+
+<p>In this demo, you will have a quick drawing warm-up in a Playground followed by an introduction to IBDesignable and IBInspectable in the SuitUp project.</p>
+
+<p>The steps here will be explained in the demo, but here are the raw instructions in case you miss a step or get stuck.</p>
+
+<h2>1) Draw a Circle</h2>
+
+<p>Open up <strong>DrawingWarmup.playground</strong> and add the following lines to the bottom of the <code>drawRect(rect:)</code> function inside the <code>CircleView</code> class:</p>
+
+<pre><code>CGContextSetFillColorWithColor(context, UIColor.grayColor().CGColor)
+CGContextFillEllipseInRect(context, rect)
+</code></pre>
+
+<p>Check the output with <em>Quick Look</em> in the side-bar. You should see a filled gray circle inside a black view.</p>
+
+<h2>2) Draw a Triangle</h2>
+
+<p>Still in <strong>DrawingWarmup.playground</strong>, add the following lines to the bottom of the <code>drawRect(rect:)</code> function inside the <code>TriangleView</code> class:</p>
+
+<pre><code>CGContextSetStrokeColorWithColor(context, UIColor.greenColor().CGColor)
+CGContextSetLineWidth(context, 5.0)
+CGContextMoveToPoint(context, CGRectGetMinX(rect), CGRectGetMaxY(rect))
+CGContextAddLineToPoint(context, CGRectGetMidX(rect), CGRectGetMinY(rect))
+CGContextAddLineToPoint(context, CGRectGetMaxX(rect), CGRectGetMaxY(rect))
+CGContextClosePath(context)
+CGContextStrokePath(context)
+</code></pre>
+
+<p>Check the output with <em>Quick Look</em> in the side-bar. You should see a stroked green trianghle inside a black view.</p>
+
+<h2>3) Draw a Circle... Again.</h2>
+
+<p>Open up <strong>SuitView.swift</strong> in <strong>SuitUp.xcodeproj</strong> and add the following lines to the bottom of the <code>drawRect(rect:)</code> function, just like in the playground example:</p>
+
+<pre><code>CGContextSetFillColorWithColor(context, UIColor.grayColor().CGColor)
+CGContextFillEllipseInRect(context, rect)
+</code></pre>
+
+<p>This time, you can't check the output just yet...</p>
+
+<h2>4) Add the IBDesignable Attribute</h2>
+
+<p>Add the following class attribute just above the <code>class SuitView: UIView</code> declaration:</p>
+
+<pre><code>@IBDesignable
+</code></pre>
+
+<h2>5) See Your Live Rendering!</h2>
+
+<p>Open up <strong>Main.storyboard</strong> and click on the white <em>View</em> in the middle of the <em>View Controller</em>. Change its class to <strong>SuitView</strong> in the <em>Identity Inspector</em> and let Interface Builder update itself. You should now see a gray circle inside the view, just like your code says so!</p>
+
+<h2>6) Draw a Spade</h2>
+
+<p>Back in <strong>SuitView.swift</strong>, replace the contents of <code>drawRect(rect:)</code> with the following:</p>
+
+<pre><code>var path = spade()
+modifyPath(&amp;path)
+UIColor.blackColor().setFill()
+path.fill()
+</code></pre>
+
+<p>Check the automatic update in <strong>Main.storyboard</strong>. Pretty neat :]</p>
+
+<h2>7) Make the Color a Variable</h2>
+
+<p>Add the following lines before the <code>drawRect(rect:)</code> function in <code>SuitView</code>:</p>
+
+<pre><code>// MARK: Variables
+var color: UIColor = UIColor.blackColor()
+</code></pre>
+
+<p>Then, replace the following line:</p>
+
+<pre><code>UIColor.blackColor().setFill()
+</code></pre>
+
+<p>With this one:</p>
+
+<pre><code>color.setFill()
+</code></pre>
+
+<h2>8) Add the IBInspectable Attribute</h2>
+
+<p>Make the <code>color</code> variable an <em>Inspectable</em> type by adding the following keyword just in front of its <code>var</code> declaration:</p>
+
+<pre><code>@IBInspectable
+</code></pre>
+
+<p>Replace the <code>MARK</code> comment with the following:</p>
+
+<pre><code>// MARK: Inspectables
+</code></pre>
+
+<h2>9) See Your Custom Control!</h2>
+
+<p>Open up <strong>Main.storyboard</strong> and switch to the <em>Attributes Inspector</em> tab of <em>SuitView</em>. Check out your brand new custom control for <em>Color</em> and try changing its value. Your path should now fill itself with a new color, just like you programmed it to do so!</p>
+
+<h2>10) Draw any Suit</h2>
+
+<p>Back in <strong>SuitView.swift</strong>, add the following line just above <code>color</code>:</p>
+
+<pre><code>@IBInspectable var suit: String = "Spade"
+</code></pre>
+
+<p>Then, replace the contents of <code>drawRect(rect:)</code> with the following:</p>
+
+<pre><code>var path: UIBezierPath
+switch(suit) {
+case "Spade":
+  path = spade()
+case "Heart":
+  path = heart()
+case "Club":
+  path = club()
+case "Diamond":
+  path = diamond()
+default:
+  path = UIBezierPath()
+}
+modifyPath(&amp;path)
+color.setFill()
+path.fill()
+</code></pre>
+
+<p>Check the automatic update in <strong>Main.storyboard</strong> and try selecting all the four valid suits by typing the appropriate String. Type a bogus value and you'll see an error!</p>
+
+<h2>11) Handle Drawing Errors</h2>
+
+<p>Make the <code>path</code> variable an <em>optional</em> like so:<code>color</code>:</p>
+
+<pre><code>var path: UIBezierPath?
+</code></pre>
+
+<p>Then, replace the <code>default:</code> switch case with the following:</p>
+
+<pre><code>path = nil
+</code></pre>
+
+<p>Finally, wrap up the drawing code in an <code>if var</code> statement:</p>
+
+<pre><code>if var p = path {
+  modifyPath(&amp;p)
+  color.setFill()
+  p.fill()
+}
+</code></pre>
+
+<p>Check back on your storyboard to see the error go away :]</p>
+
+<h2>12) Add a Joker</h2>
+
+<p>Add the following inspectable variable just below <code>color</code>:</p>
+
+<pre><code>@IBInspectable var joker: UIImage? = UIImage(named: "Joker")
+</code></pre>
+
+<p>Then, attempt to unwrap and draw the image by adding the following lines at the end of <code>drawRect(rect:)</code>:</p>
+
+<pre><code>else if let image = joker {
+  image.drawInRect(AVMakeRectWithAspectRatioInsideRect(image.size, bounds))
+}
+</code></pre>
+
+<h2>13) Test your Dynamic Custom Control</h2>
+
+<p>Open up <strong>Main.storyboard</strong> and set an image for your <em>Joker</em>. Type in a bogus <em>Suit</em> value to activate it and revel in your awesome new UI component!</p>
+
+<h2>14) That's It!</h2>
+
+<p>Congrats, at this time you should have a complete <strong>SuitView</strong>, and learned a lot about IBDesignable and IBInspectable along the way! You are ready to move on to the lab.</p>
+</body>
+</html>

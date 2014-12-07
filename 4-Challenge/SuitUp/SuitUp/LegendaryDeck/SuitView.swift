@@ -18,7 +18,7 @@ class SuitView: UIView {
   
   // MARK: Drawing code
   override func drawRect(rect: CGRect) {
-    var path: UIBezierPath!
+    var path: UIBezierPath?
     switch(suit) {
     case "Spade":
       path = spade()
@@ -31,10 +31,10 @@ class SuitView: UIView {
     default:
       path = nil
     }
-    if(path != nil) {
-      modifyPath(&path)
+    if var p = path {
+      modifyPath(&p)
       color.setFill()
-      path.fill()
+      p.fill()
     } else if let image = joker {
       image.drawInRect(AVMakeRectWithAspectRatioInsideRect(image.size, bounds))
     }
@@ -42,7 +42,7 @@ class SuitView: UIView {
   
   // MARK: Transformations
   // Translate to center & Scale to fit
-  private func modifyPath(inout path: UIBezierPath!) {
+  private func modifyPath(inout path: UIBezierPath) {
     let b: (w: CGFloat, h: CGFloat) = (CGRectGetWidth(bounds), CGRectGetHeight(bounds))
     let p: (w: CGFloat, h: CGFloat) = (CGRectGetWidth(path.bounds), CGRectGetHeight(path.bounds))
     

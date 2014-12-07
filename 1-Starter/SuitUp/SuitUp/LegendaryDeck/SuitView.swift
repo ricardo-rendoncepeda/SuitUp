@@ -12,12 +12,12 @@ import AVFoundation
 class SuitView: UIView {
   // MARK: Drawing code
   override func drawRect(rect: CGRect) {
-    
+    let context = UIGraphicsGetCurrentContext()
   }
   
   // MARK: Transformations
   // Translate to center & Scale to fit
-  private func modifyPath(inout path: UIBezierPath!) {
+  private func modifyPath(inout path: UIBezierPath) {
     let b: (w: CGFloat, h: CGFloat) = (CGRectGetWidth(bounds), CGRectGetHeight(bounds))
     let p: (w: CGFloat, h: CGFloat) = (CGRectGetWidth(path.bounds), CGRectGetHeight(path.bounds))
     
