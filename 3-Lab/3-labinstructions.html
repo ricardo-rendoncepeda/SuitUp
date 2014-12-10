@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>It's Going To Be Legen...</title>
+
+</head>
+<body>
+<p><img src="3-LabImages/3.png" width="680" alt="image" /></p>
+
+<h1>It's Going To Be Legen...</h1>
+
+<p>At this point, you have a solid Suit View that you can customize to display the four French suits and a Joker image.</p>
+
+<p>But what about the <strong>card</strong> itself? What will these suits be displayed on?</p>
+
+<p>Furthermore, the distinctive feature of any deck of cards is the visual design of the <strong>back</strong>.</p>
+
+<p>You’ve already begun to <em>suit up</em>, so let’s use this lab time to make this deck <em>…dary!</em></p>
+
+<h2>Part 1: Card View</h2>
+
+<p>Open up <strong>CardView.Swift</strong> and you won't see anything but an empty <code>UIView</code> subclass... so let's start here!</p>
+
+<p>First of all, make this a designable class by adding the following class attribute just above the line <code>class CardView: UIView</code>:</p>
+
+<pre><code>@IBDesignable
+</code></pre>
+
+<p>Add the following code inside the class declaration:</p>
+
+<pre><code>// MARK: Inspectables
+@IBInspectable var cornerRadius: CGFloat = 20.0 {
+  didSet {
+    layer.cornerRadius = cornerRadius
+  }
+}
+
+@IBInspectable var borderColor: UIColor = UIColor.blackColor() {
+  didSet {
+    layer.borderColor = borderColor.CGColor
+  }
+}
+
+@IBInspectable var borderWidth: CGFloat = 4.0 {
+  didSet {
+    layer.borderWidth = borderWidth
+  }
+}
+</code></pre>
+
+<p>Instead of using <code>drawRect(rect:)</code> commands on a <code>UIView</code> like before, you will now be using <em>property observers</em> on the view's <code>CALayer</code> to update and render your drawing code. The <code>CALayer</code> class manages and displays visual contents, so it works quite nicely at design time. The <code>didSet</code> observer on all your inspectable variables will be called immediately after their new value is set in Interface Builder.</p>
+
+<p>Open up <strong>Main.storyboard</strong> and click on the light gray <em>View</em> inside the <em>View Controller</em>. Change its class to <em>CardView</em> in the <em>Identity Inspector</em> and let Interface Builder update itself. Switch to the <em>Attributes Inspector</em> tab but don't touch anything just yet! You'll notice how your inspectable variables are there, but none of their default values are being rendered. Hmm...</p>
+
+<p>To fix this, switch back to <strong>CardView.swift</strong> and add the following code at the bottom of the class declaration:</p>
+
+<pre><code>// MARK: IB code
+override func prepareForInterfaceBuilder() {
+  layer.cornerRadius = cornerRadius
+  layer.borderColor = borderColor.CGColor
+  layer.borderWidth = borderWidth
+}
+</code></pre>
+
+<p><code>prepareForInterfaceBuilder()</code> is an awesome new method where you can place code that will only run in Interface Builder at design time. This way, you can create a light setup for your custom view, which in this case is simply setting your default layer values.</p>
+
+<p>This method will be <em>very important</em> in the challenge section, so I will say it again: all code inside <code>prepareForInterfaceBuilder()</code> will only run in Interface Builder at design time, not in your actual app.</p>
+
+<p>Check back on <strong>Main.storyboard</strong> to see the automatic update, then feel free to change the values as you please :]</p>
+
+<p>Open up <strong>CardView.swift</strong> and add the following code just above the <code>// MARK: IB code</code> comment:</p>
+
+<pre><code>@IBInspectable var skeumorphic: Bool = false {
+  didSet {
+    if(skeumorphic) {
+      layer.shadowColor = UIColor.blackColor().CGColor
+      layer.shadowOpacity = 0.33
+      layer.shadowRadius = 3.0
+      layer.shadowOffset = CGSizeMake(6.0, 6.0)
+    }
+  }
+}
+</code></pre>
+
+<p>In case you miss the pre-iOS 7 days of skeumorphism, you can add a sweet drop shadow to your playing card. Switch to <strong>Main.storyboard</strong> and turn the <em>Skeumorphic</em> control <em>On</em>. Uh-oh.</p>
+
+<p><img src="3-LabImages/Lab1.png" width="112" alt="image" /></p>
+
+<p>That didn't render so well, so build and run the app to see the actual effect.</p>
+
+<p><img src="3-LabImages/Lab2.png" width="112" alt="image" /></p>
+
+<p>Live rendering in Xcode 6 is pretty powerful, but some advanced effects are simply too much to compute at design time. Shadows are one such case, with another being <code>UIVisualEffectView</code> instances, so use this example as a reminder that even the best previews in Interface Builder aren't a substitute for the real thing :]</p>
+
+<p>Also, notice how the <code>prepareForInterfaceBuilder()</code> code wasn't called in your actual app :O</p>
+
+<p>Be sure to keep this in mind for the upcoming challenge ;]</p>
+
+<p>With that said, you now have all the tools to build a custom back view in Interface Builder, so let's move on!</p>
+
+<h2>Part 2: Back View</h2>
+
+<p>Open up <strong>BackView.xib</strong> and you will once again be greeted by a whole lot of empty... a perfect opportunity to start your visual design from scratch.</p>
+
+<p>Drag a <code>UIView</code> from the <em>Object Library</em> onto the main <em>View</em>. Resize it to fit the entire container, if needed. Change its class to <code>CardView</code> in the <em>Identity Inspector</em> and wait for the visual update, then customize it as you wish. The sample project keeps the default values and changes the background color to <code>r=12</code>, <code>g=93</code>, <code>b=42</code>.</p>
+
+<p>Next, drag a <code>UIImageView</code> onto the <em>Card View</em>. Resize it to <code>280x280</code>, center it in its parent view, and set its image to <em>Logo</em> with an <em>Aspect Fit Mode</em>.</p>
+
+<p>Finally, you'll be adding two <code>UILabel</code> components to check out Xcode 6's "one last thing". Add the first <code>UILabel</code> above the logo and resize it to <code>280x50</code>, with the text reading "Legen...", then left-align it with the left edg of the <code>UIImageView</code>. Add the second <code>UILabel</code> below the logo and resize it to <code>280x50</code> too, with the text reading "... dary!", then right-align the text with the right edge of the <code>UIImageView</code>.</p>
+
+<p>Now, here comes the magic :]</p>
+
+<p>Try setting a custom font on the <code>UILabel</code> components. For the sample project, I used the <code>Bitter</code> family for both at size <code>32</code> with a <code>Regular</code> style for the top label, and an <code>Italic</code> style for the bottom one. Hopefully you are thrilled by this new feature of Xcode 6!</p>
+
+<p>There is plenty of room for artistic freedom in this part of the lab, but for reference purposes, make sure the back of your card looks something like this:</p>
+
+<p><img src="3-LabImages/Lab3.png" width="680" alt="image" /></p>
+
+<p>If you have some extra time and are feeling brave, try setting some auto layout constraints and verify them using the assistant editor preview :]</p>
+
+<p>Congratulations, you’ve now uncovered a few more tricks in Xcode 6 and have a solid grasp of how to live-render a dynamic custom control in different situations. You’re ready to continue on to the challenge, where you’ll design a more complex front view to finalize your deck with style!</p>
+</body>
+</html>
