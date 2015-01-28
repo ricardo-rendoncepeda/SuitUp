@@ -36,7 +36,7 @@ Add the following code inside the class declaration:
 That didn't render so well, so build and run the app to see the actual effect.
 ![image](3-LabImages/Lab2.png =112x)
 Live rendering in Xcode 6 is pretty powerful, but some advanced effects are simply too much to compute at design time. Shadows are one such case, with another being `UIVisualEffectView` instances, so use this example as a reminder that even the best previews in Interface Builder aren't a substitute for the real thing :]
-Also, notice how the `prepareForInterfaceBuilder()` code wasn't called in your actual app :O
+Also, notice how the `prepareForInterfaceBuilder()` code wasn't called in your actual app :O (your rendering may differ from the above screenshot, depending on the values you modified in Interface Builder)
 Be sure to keep this in mind for the upcoming challenge ;]
 With that said, you now have all the tools to build a custom back view in Interface Builder, so let's move on!
 ## Part 2: Back View

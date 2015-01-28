@@ -31,10 +31,10 @@ class SuitView: UIView {
     default:
       path = nil
     }
-    if var p = path {
-      modifyPath(&p)
+    if var path = path {
+      modifyPath(&path)
       color.setFill()
-      p.fill()
+      path.fill()
     } else if let image = joker {
       image.drawInRect(AVMakeRectWithAspectRatioInsideRect(image.size, bounds))
     }

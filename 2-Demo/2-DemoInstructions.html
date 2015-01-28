@@ -187,6 +187,8 @@ CGContextStrokePath(context)
 
 <p>Check the output with <em>Quick Look</em> in the side-bar. You should see a stroked green trianghle inside a black view.</p>
 
+<p>NOTE: For those of you new to the CGGeometry functions, this is Apple's recommended way to deal with <code>CGRect</code> data structures. This is because <code>CGRect</code> values may be standardized in the background for optimization purposes :]</p>
+
 <h2>3) Draw a Circle... Again.</h2>
 
 <p>Open up <strong>SuitView.swift</strong> in <strong>SuitUp.xcodeproj</strong> and add the following lines to the bottom of the <code>drawRect(rect:)</code> function, just like in the playground example:</p>
@@ -220,6 +222,8 @@ path.fill()
 
 <p>Check the automatic update in <strong>Main.storyboard</strong>. Pretty neat :]</p>
 
+<p>NOTE: <code>modifyPath</code> simply takes in a path, translates it to the center of the view, then scales it to fit (depending on width/height dimensions).</p>
+
 <h2>7) Make the Color a Variable</h2>
 
 <p>Add the following lines before the <code>drawRect(rect:)</code> function in <code>SuitView</code>:</p>
@@ -235,8 +239,10 @@ var color: UIColor = UIColor.blackColor()
 
 <p>With this one:</p>
 
-<pre><code>color.setFill()
+<pre><code>color.setFill() 
 </code></pre>
+
+<p>NOTE: Swift's type inference is a much heralded language feature, which you might be tempted to use here. However, you'll soon find out why explicit type declarations are necessary for this demo...</p>
 
 <h2>8) Add the IBInspectable Attribute</h2>
 
@@ -253,6 +259,8 @@ var color: UIColor = UIColor.blackColor()
 <h2>9) See Your Custom Control!</h2>
 
 <p>Open up <strong>Main.storyboard</strong> and switch to the <em>Attributes Inspector</em> tab of <em>SuitView</em>. Check out your brand new custom control for <em>Color</em> and try changing its value. Your path should now fill itself with a new color, just like you programmed it to do so!</p>
+
+<p>NOTE: Remember the type inference issue I mentioned? Well, explicit type declaration is necessary when working with <code>@IBInspectable</code> :]</p>
 
 <h2>10) Draw any Suit</h2>
 
@@ -297,14 +305,18 @@ path.fill()
 
 <p>Finally, wrap up the drawing code in an <code>if var</code> statement:</p>
 
-<pre><code>if var p = path {
-  modifyPath(&amp;p)
+<pre><code>if var path = path {
+  modifyPath(&amp;path)
   color.setFill()
-  p.fill()
+  path.fill()
 }
 </code></pre>
 
 <p>Check back on your storyboard to see the error go away :]</p>
+
+<p>NOTE: <code>if let</code> is a far more common pattern for optional binding, but it's not possible when working with the <code>inout</code> <code>modifyPath</code> method. This type of parameter value will be modified, therefore it needs to be declared as a <code>var</code> and thus you see the <code>if var</code> pattern.</p>
+
+<p>NOTE: As for the whole <code>if var path = path</code>, this style is known as shadowing and you can read more about it in our Swift Style Guide repo on GitHub.</p>
 
 <h2>12) Add a Joker</h2>
 
@@ -324,7 +336,11 @@ path.fill()
 
 <p>Open up <strong>Main.storyboard</strong> and set an image for your <em>Joker</em>. Type in a bogus <em>Suit</em> value to activate it and revel in your awesome new UI component!</p>
 
-<h2>14) That's It!</h2>
+<h2>14) Preview your Dynamic Custom Control</h2>
+
+<p>Activate the <em>Assistant Editor</em> window and select <em>Preview</em> from the file dropdown menu in the split-pane window. Add a couple of preview devices in both portrait and landscape orientation so you can see yet another live rendering of your dynamic custom control :]</p>
+
+<h2>15) That's It!</h2>
 
 <p>Congrats, at this time you should have a complete <strong>SuitView</strong>, and learned a lot about IBDesignable and IBInspectable along the way! You are ready to move on to the lab.</p>
 </body>

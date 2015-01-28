@@ -9,10 +9,12 @@ The end goal of this challenge is to allow a designer to be able to select a pri
 ![image](4-ChallengeImages/Challenge1.png =680x)
 
 ## Part 1: IBInspectables
+Before you do anything else, make sure you have these four `@IBInspectable`s displaying in *Interface Builder* with the correct types.
 
 ![image](4-ChallengeImages/Challenge2.png =460x)
 
 ## Part 2: Prepare for IB
+Next up, all your code besides the `@IBInspectable` declarations should be contained inside `prepareForInterfaceBuilder`.
 
 ![image](4-ChallengeImages/Challenge3.png =460x)
 
